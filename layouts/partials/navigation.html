@@ -1,0 +1,19 @@
+{{ $currentPage := . }}
+
+<ul class="menu-list">
+    {{ range .Site.Menus.main }}
+        <li>
+            <a href="{{ .URL }}" class="{{if $currentPage.IsMenuCurrent "main" . }}is-active{{end}}">{{ .Name }}</a>
+
+            {{ if .HasChildren }}
+                <ul>
+                    {{ range .Children }}
+                        <li>
+                            <a href="{{ .URL }}" class="{{ if $currentPage.IsMenuCurrent "main" . }}is-active{{ end }}">{{ .Name }}</a>
+                        </li>
+                    {{ end }}
+                </ul>
+            {{ end}}
+        </li>
+    {{ end }}
+</ul>

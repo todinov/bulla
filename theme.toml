@@ -1,0 +1,12 @@
+name = "Bulla"
+license = "MIT"
+licenselink = "https://github.com/miracl/bulmadocs/blob/master/LICENSE"
+description = "Hugo documentation theme"
+homepage = "https://github.com/miracl/bulmadocs"
+tags = ["responsive", "clean", "documentation", "docs", "flexbox", "search", "mobile"]
+features = []
+min_version = "0.55.0"
+
+[author]
+  name = "Ivan Todinov"
+  homepage = "https://github.com/todinov/"

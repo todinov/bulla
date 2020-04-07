@@ -1,0 +1,24 @@
+languageCode: en-us
+title: MIRACL Documentation
+theme: bulla
+
+params:
+  navbarlogo: /miracl-logo.svg
+  footer: false
+
+taxonomies:
+  author: ""
+  category: "categories"
+  tag: "tags"
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+
+menu:
+  main:
+    - identifier: github
+      name: GitHub
+      url: https://github.com/todinov/bulla
+      weight: 100

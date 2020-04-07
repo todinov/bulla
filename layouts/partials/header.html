@@ -1,0 +1,21 @@
+<nav class="navbar has-shadow" role="navigation" aria-label="main navigation">
+  <div class="container is-fluid">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+        <img src="{{ site.Params.navbarlogo | relURL }}" alt="">
+      </a>
+
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar-menu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="navbar-menu" class="navbar-menu is-static">
+      <div class="navbar-end">
+        {{ partial "search" }}
+      </div>
+    </div>
+  </div>
+</nav>

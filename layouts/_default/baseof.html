@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang }}">
+
+<head>
+  {{ partial "htmlhead" . }}
+</head>
+
+<body>
+  {{ partial "header" . }}
+
+  <section class="section">
+    <div class="container is-fluid">
+      <div class="columns is-variable is-8">
+        <div class="column is-one-fifth">
+          <aside class="menu">
+            {{ partial "navigation" . }}
+          </aside>
+        </div>
+
+        <div class="column is-three-fifths">
+          <h1 class="title">{{ .Page.Title }}</h1>
+
+          <div class="content">
+            {{ template "main" . }}
+          </div>
+        </div>
+        <div class="is-one-fifth">
+          <div class="toc-wrapper">
+            {{ .Page.TableOfContents }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {{ if site.Params.footer }}
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>© 2019 MIRACL. All Rights Reserved</p>
+      </div>
+    </footer>
+  {{ end }}
+
+  {{ template "_internal/google_analytics_async.html" . }}
+</body>
+
+</html>

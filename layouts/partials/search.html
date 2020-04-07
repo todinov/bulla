@@ -1,0 +1,8 @@
+<div class="navbar-item" role="search" id="search-wrapper">
+    <input type="search" class="input" placeholder="Search" autocomplete="off" id="search-field" disabled="disabled" />
+
+    <div class="navbar-dropdown" id="search-results"></div>
+</div>
+
+{{ $script := resources.Get "js/search.js" | resources.Minify | resources.Fingerprint }}
+<script src="{{ $script.RelPermalink }}"></script>
