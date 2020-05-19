@@ -1,3 +1,7 @@
+.navbar > .container {
+    margin: 0 1.5rem;
+}
+
 pre {
     font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
     font-size: 13px;
@@ -21,10 +25,6 @@ pre {
     overflow: auto
 }
 
-aside.menu {
-    margin-top: -1em;
-}
-
 .toc-wrapper {
     border-left: 1px solid #dbdbdb;
     padding-left: 12px;
@@ -44,3 +44,51 @@ aside.menu {
         }
     }
 }
+
+.menu {
+    .sub-menu {
+        display: none;
+    }
+
+    .has-children {
+        position: relative;
+
+        &:after {
+            border: 2px solid transparent;
+            border-radius: 2px;
+            border-right: 0;
+            border-top: 0;
+            content: " ";
+            display: block;
+            pointer-events: none;
+            transform: rotate(-135deg);
+            transform-origin: center;
+            height: .5em;
+            width: .5em;
+            border-color: #999;
+            position: absolute;
+            top: 50%;
+            right: 1.125em;
+            margin-top: -.25em;
+        }
+
+        &.is-active,
+        &.has-active {
+            &:after {
+                transform: rotate(-45deg);
+            }
+
+            & + .sub-menu {
+                display: block;
+            }
+        }
+
+        &.is-active {
+            &:after {
+                border-color: #fff;
+            }
+        }
+    }
+
+}
+
