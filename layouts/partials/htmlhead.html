@@ -2,7 +2,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 {{- template "_internal/opengraph.html" . -}}
 
-<title>{{ .Site.Title -}}</title>
+<title>{{ .Page.Title }} | {{ .Site.Title -}}</title>
 <link rel="icon" href="{{ "favicon.png" | relURL }}" type="image/x-icon">
 
 <!-- Theme stylesheet, you can customize scss by creating `assets/custom.scss` in your website -->
