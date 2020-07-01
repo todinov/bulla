@@ -1,11 +1,13 @@
 {{ define "main" }}
 <article class="markdown">
-  {{- .Content -}}
-
-  {{ range .Pages }}
-    <li>
-      <a href="{{ .Permalink }}">{{ .Title }}</a>
-    </li>
+  {{ if .Content }}
+    {{- .Content -}}
+  {{ else }}
+    {{ range .Pages }}
+      <li>
+        <a href="{{ .Permalink }}">{{ .Title }}</a>
+      </li>
+    {{ end }}
   {{ end }}
 </article>
 {{ end }}
