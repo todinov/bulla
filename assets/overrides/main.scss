@@ -100,3 +100,16 @@ pre {
 
 }
 
+.tabs {
+    ul {
+        margin: 0 !important;
+
+        a {
+            outline: none !important;
+        }
+    }
+}
+
+.tab {
+    margin-bottom: 3em;
+}

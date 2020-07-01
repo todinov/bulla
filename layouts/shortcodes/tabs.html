@@ -1,0 +1,32 @@
+{{ if .Inner }}{{ end }}
+{{ $id := .Get 0 }}
+{{ $group := printf "tabs-%s" $id }}
+
+{{ if not (.Page.Scratch.Get "tabs") }}
+<script src="https://cdn.jsdelivr.net/gh/cferdinandi/tabby@12/dist/js/tabby.polyfills.min.js"></script>
+<script type="text/javascript">
+  document.addEventListener('tabby', function (event) {
+    event.detail.previousTab.parentElement.className = "";
+    event.target.parentElement.className = "is-active";
+  }, false);
+</script>
+{{ .Page.Scratch.Set "tabs" true }}
+{{ end }}
+
+<div class="tabs">
+  <ul id="{{ $group }}">
+    {{ range $index, $tab :=  .Scratch.Get $group }}
+      <li {{ if eq $index 0 }}class="is-active"{{ end }}><a href="#{{ $group }}-{{ $index }}" {{ if eq $index 0 }}data-tabby-default{{ end }}>{{ $tab.Name }}</a></li>
+    {{ end }}
+  </ul>
+</div>
+
+{{ range $index, $tab :=  .Scratch.Get $group }}
+<div id="{{ $group }}-{{ $index }}" class="tab">
+  {{ .Content | markdownify }}
+</div>
+{{ end }}
+
+<script type="text/javascript">
+new Tabby('#{{ $group }}');
+</script>
