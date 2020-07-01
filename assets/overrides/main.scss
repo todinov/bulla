@@ -33,7 +33,7 @@ pre {
     border-left: 1px solid #dbdbdb;
     padding-left: 12px;
     font-size: .9em;
-    line-height: 2em;
+    line-height: 1.5em;
     position: fixed;
 
     a {
@@ -46,6 +46,10 @@ pre {
             background-color: #f5f5f5;
             color: #363636;
         }
+    }
+
+    li > ul {
+        margin-left: .75em;
     }
 }
 
