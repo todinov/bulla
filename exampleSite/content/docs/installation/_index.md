@@ -22,6 +22,6 @@ Set `theme = "bulla"` for toml configuration or `theme: bulla` for yaml configur
 hugo new site docs; cd docs
 git init
 git submodule add https://github.com/todinov/bulla themes/bulla
-cp -r themes/bulla/example/content .
-cp themes/bulla/example/config.yaml .
+cp -r themes/bulla/exampleSite/content .
+cp themes/bulla/exampleSite/config.yaml .
 ```
