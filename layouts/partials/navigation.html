@@ -19,7 +19,7 @@
             <ul class="sub-menu">
                 {{ range .Children }}
                 <li>
-                    <a href="{{ .URL }}" class="{{ if $currentPage.IsMenuCurrent $menuID . }}is-active{{ end }}">{{ .Pre }} {{ .Name }}</a>
+                    <a href="{{ .URL }}" class="{{ if $currentPage.IsMenuCurrent $menuID . }}is-active{{ end }} {{if $currentPage.HasMenuCurrent $menuID . }}has-active{{end}} {{ if .HasChildren }}has-children{{ end }}">{{ .Pre }} {{ .Name }}</a>
 
                     {{ if .HasChildren }}
                     <ul class="sub-menu">
