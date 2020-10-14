@@ -3,7 +3,7 @@
 {{ $group := printf "tabs-%s" $id }}
 
 {{ if not (.Page.Scratch.Get "tabs") }}
-<script src="https://cdn.jsdelivr.net/gh/cferdinandi/tabby@12/dist/js/tabby.polyfills.min.js"></script>
+<script src="{{ "tabby/tabby.polyfills.min.js" | relURL }}"></script>
 <script type="text/javascript">
   document.addEventListener('tabby', function (event) {
     event.detail.previousTab.parentElement.className = "";
