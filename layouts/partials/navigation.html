@@ -11,7 +11,7 @@
     <ul class="menu-list">
         {{ range (index $menus .menu) }}
         <li>
-            <a href="{{ .URL }}" class="{{if $currentPage.IsMenuCurrent $menuID . }}is-active{{end}} {{if $currentPage.HasMenuCurrent $menuID . }}has-active{{end}} {{ if .HasChildren }}has-children{{ end }}">
+            <a href="{{ .URL }}" title="{{ .Pre }} {{ .Name }}" class="{{if $currentPage.IsMenuCurrent $menuID . }}is-active{{end}} {{if $currentPage.HasMenuCurrent $menuID . }}has-active{{end}} {{ if .HasChildren }}has-children{{ end }}">
                 {{ .Pre }} {{ .Name }}
             </a>
 
@@ -19,13 +19,15 @@
             <ul class="sub-menu">
                 {{ range .Children }}
                 <li>
-                    <a href="{{ .URL }}" class="{{ if $currentPage.IsMenuCurrent $menuID . }}is-active{{ end }} {{if $currentPage.HasMenuCurrent $menuID . }}has-active{{end}} {{ if .HasChildren }}has-children{{ end }}">{{ .Pre }} {{ .Name }}</a>
+                    <a href="{{ .URL }}" title="{{ .Pre }} {{ .Name }}" class="{{ if $currentPage.IsMenuCurrent $menuID . }}is-active{{ end }} {{if $currentPage.HasMenuCurrent $menuID . }}has-active{{end}} {{ if .HasChildren }}has-children{{ end }}">
+                        {{ .Pre }} {{ .Name }}
+                    </a>
 
                     {{ if .HasChildren }}
                     <ul class="sub-menu">
                         {{ range .Children }}
                         <li>
-                            <a href="{{ .URL }}" class="{{ if $currentPage.IsMenuCurrent $menuID . }}is-active{{ end }}">{{ .Pre }} {{ .Name }}</a>
+                            <a href="{{ .URL }}" title="{{ .Pre }} {{ .Name }}" class="{{ if $currentPage.IsMenuCurrent $menuID . }}is-active{{ end }}">{{ .Pre }} {{ .Name }}</a>
                         </li>
                         {{ end }}
                     </ul>

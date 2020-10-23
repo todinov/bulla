@@ -54,12 +54,19 @@ pre {
 }
 
 .menu {
+    .menu-list a {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
     .sub-menu {
         display: none;
     }
 
     .has-children {
         position: relative;
+        padding-right: 20px;
 
         &:after {
             border: 2px solid transparent;
@@ -76,7 +83,7 @@ pre {
             border-color: #999;
             position: absolute;
             top: 50%;
-            right: 1.125em;
+            right: 10px;
             margin-top: -.25em;
         }
 
