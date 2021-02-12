@@ -18,8 +18,17 @@ axios.get("/search")
         var searchResultElement = document.getElementById("search-results");
 
         searchInput.removeAttribute("disabled");
-        searchInput.addEventListener("keyup", function (e) {
+
+        searchInput.addEventListener("input", function (e) {
             var searchString = e.target.value;
+
+            if (!searchString) {
+                searchWrapper.classList.remove("is-active");
+                return;
+            }
+
+            var searchResults = [];
+
             if (searchString && searchString.length > 2) {
                 try {
                     searchResults = searchIndex.search(searchString);
@@ -28,8 +37,6 @@ axios.get("/search")
                         return;
                     }
                 }
-            } else {
-                searchResults = [];
             }
 
             searchWrapper.classList.add("is-active");
