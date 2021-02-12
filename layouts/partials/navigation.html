@@ -1,7 +1,21 @@
-{{ $menus := .Site.Menus }}
 {{ $currentPage := . }}
+{{ $menus := .Site.Menus }}
+{{ $sidebarMenus := .Site.Params.sidebarMenus }}
 
-{{ range .Site.Params.sidebarMenus }}
+{{ range .Site.Menus.main }}
+    {{ $sidebar := .Params.sidebar }}
+
+    {{ range $sidebar }}
+        {{ $menuID := .menu }}
+        {{ range (index $menus $menuID) }}
+            {{ if or ($currentPage.IsMenuCurrent $menuID .) ($currentPage.HasMenuCurrent $menuID . ) }}
+                {{ $sidebarMenus = $sidebar }}
+            {{ end }}
+        {{ end }}
+    {{ end }}
+{{ end }}
+
+{{ range $sidebarMenus }}
     {{ $menuID := .menu }}
 
     {{ if .label }}
@@ -9,9 +23,9 @@
     {{ end }}
 
     <ul class="menu-list">
-        {{ range (index $menus .menu) }}
+        {{ range (index $menus $menuID) }}
         <li>
-            <a href="{{ .URL }}" title="{{ .Pre }} {{ .Name }}" class="{{if $currentPage.IsMenuCurrent $menuID . }}is-active{{end}} {{if $currentPage.HasMenuCurrent $menuID . }}has-active{{end}} {{ if .HasChildren }}has-children{{ end }}">
+            <a href="{{ .URL }}" title="{{ .Pre }} {{ .Name }}" class="{{if .Params.expanded }}is-expanded{{end}} {{if $currentPage.IsMenuCurrent $menuID . }}is-active{{end}} {{if $currentPage.HasMenuCurrent $menuID . }}has-active{{end}} {{ if .HasChildren }}has-children{{ end }}">
                 {{ .Pre }} {{ .Name }}
             </a>
 

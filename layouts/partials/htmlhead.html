@@ -9,6 +9,9 @@
 {{- $styles := resources.Get "style.sass" | resources.ExecuteAsTemplate "style.sass" . | resources.ToCSS | resources.Minify | resources.Fingerprint }}
 <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}">
 
+{{ $navscript := resources.Get "js/navbar.js" | resources.Minify | resources.Fingerprint }}
+<script src="{{ $navscript.RelPermalink }}"></script>
+
 {{- template "_internal/google_analytics_async.html" . -}}
 
 <!-- RSS -->

@@ -1,23 +1,54 @@
-<nav class="navbar has-shadow" role="navigation" aria-label="main navigation">
+{{ $currentPage := . }}
+{{ $menus := .Site.Menus }}
+
+<nav id="navbar" role="navigation" aria-label="main navigation">
   <div class="container is-fluid">
-    <div class="navbar-brand">
-      <a class="navbar-item" href="{{ if site.Params.navbarLogoURL }}{{ site.Params.navbarLogoURL }}{{ else }}/{{ end }}">
-        <img src="{{ site.Params.navbarLogo | relURL }}" alt="">
-      </a>
+    <div class="columns">
+      <div class="column is-2-desktop">
+        <div class="columns is-mobile is-vcentered">
+          <div class="column">
+            <a href="{{ if site.Params.navbarLogoURL }}{{ site.Params.navbarLogoURL }}{{ else }}/{{ end }}">
+              <img src="{{ site.Params.navbarLogo | relURL }}" alt="">
+            </a>
+          </div>
+          <div class="column is-narrow">
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="sidebar-navigation">
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="column is-offset-1-fullhd is-hidden-touch">
+        <div id="navbar-menu" class="navbar-menu">
+          <div class="navbar-start">
+            {{ range .Site.Menus.main }}
+              {{ $active := false }}
 
-      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar-menu">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a>
-    </div>
+              {{ range .Params.sidebar }}
+                  {{ $menuID := .menu }}
+                  {{ range (index $menus $menuID) }}
+                      {{ if or ($currentPage.IsMenuCurrent $menuID .) ($currentPage.HasMenuCurrent $menuID . ) }}
+                          {{ $active = true }}
+                      {{ end }}
+                  {{ end }}
+              {{ end }}
+              <a href="{{ .URL }}" class="navbar-item {{if $active }}is-active{{end}}">
+                {{ .Pre }} {{ .Name }}
+              </a>
+            {{ end }}
+          </div>
+        </div>
+      </div>
 
-    <div id="navbar-menu" class="navbar-menu is-static">
       {{ if .Site.Params.enableSearch }}
-        <div class="navbar-end">
+        <!-- Search field -->
+        <div class="column is-2 is-offset-1-fullhd is-hidden-touch">
           {{ partial "search" }}
         </div>
       {{ end }}
     </div>
+
   </div>
 </nav>

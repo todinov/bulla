@@ -11,13 +11,13 @@
   <section class="section">
     <div class="container is-fluid">
       <div class="columns">
-        <div class="column is-2">
+        <div id="sidebar-navigation" class="column is-2">
           <aside class="menu">
             {{ partial "navigation" . }}
           </aside>
         </div>
 
-        <div class="column is-6 is-offset-1">
+        <div class="column is-offset-1-fullhd">
           <h1 class="title">{{ .Page.Title }}</h1>
 
           <div class="content">
@@ -25,7 +25,7 @@
           </div>
         </div>
 
-        <div class="column is-2 is-offset-1">
+        <div class="column is-2 is-offset-1-fullhd">
           <div class="toc-wrapper">
             {{ .Page.TableOfContents }}
           </div>
