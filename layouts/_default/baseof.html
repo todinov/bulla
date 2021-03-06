@@ -9,15 +9,15 @@
   {{ partial "header" . }}
 
   <section class="section">
-    <div class="container is-fluid">
-      <div class="columns">
-        <div id="sidebar-navigation" class="column is-2">
+    <div class="container {{ if site.Params.layoutFluid }}is-fluid{{ end }}">
+      <div class="columns is-variable is-8">
+        <div id="sidebar-navigation" class="column is-3">
           <aside class="menu">
             {{ partial "navigation" . }}
           </aside>
         </div>
 
-        <div class="column is-8 is-6-fullhd is-offset-1-fullhd">
+        <div class="column {{ if site.Params.enableTOC }}is-7{{ else }}is-9{{ end }}">
           <h1 class="title">{{ .Page.Title }}</h1>
 
           <div class="content">
@@ -25,11 +25,13 @@
           </div>
         </div>
 
-        <div class="column is-2 is-offset-1-fullhd">
-          <div class="toc-wrapper">
-            {{ .Page.TableOfContents }}
+        {{ if site.Params.enableTOC }}
+          <div class="column is-2">
+            <div class="toc-wrapper">
+              {{ .Page.TableOfContents }}
+            </div>
           </div>
-        </div>
+        {{ end }}
       </div>
     </div>
   </section>

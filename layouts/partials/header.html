@@ -2,9 +2,9 @@
 {{ $menus := .Site.Menus }}
 
 <nav id="navbar" role="navigation" aria-label="main navigation">
-  <div class="container is-fluid">
-    <div class="columns">
-      <div class="column is-2-desktop">
+  <div class="container {{ if site.Params.layoutFluid }}is-fluid{{ end }}">
+    <div class="columns is-variable is-8">
+      <div class="column is-3-desktop">
         <div class="columns is-mobile is-vcentered">
           <div class="column">
             <a href="{{ if site.Params.navbarLogoURL }}{{ site.Params.navbarLogoURL }}{{ else }}/{{ end }}">
@@ -20,7 +20,7 @@
           </div>
         </div>
       </div>
-      <div class="column is-8 is-6-fullhd is-offset-1-fullhd is-hidden-touch">
+      <div class="column is-7 is-hidden-touch">
         <div id="navbar-menu" class="navbar-menu">
           <div class="navbar-start">
             {{ range .Site.Menus.main }}
@@ -44,7 +44,7 @@
 
       {{ if .Site.Params.enableSearch }}
         <!-- Search field -->
-        <div class="column is-2 is-offset-1-fullhd is-hidden-touch">
+        <div class="column is-2 is-hidden-touch">
           {{ partial "search" }}
         </div>
       {{ end }}
