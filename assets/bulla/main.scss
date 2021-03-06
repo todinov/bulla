@@ -139,3 +139,13 @@ pre {
 .tab {
     margin-bottom: 3em;
 }
+
+.content {
+    h2:not(:first-child) {
+        margin-top: 2em;
+    }
+
+    h3:not(:first-child) {
+        margin-top: 2em;
+    }
+}

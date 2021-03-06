@@ -35,11 +35,7 @@
   </section>
 
   {{ if site.Params.footer }}
-    <footer class="footer">
-      <div class="content has-text-centered">
-        <p>{{ site.Params.footer.copyright }}</p>
-      </div>
-    </footer>
+    {{ partial "footer" . }}
   {{ end }}
 
   {{ template "_internal/google_analytics_async.html" . }}
