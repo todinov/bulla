@@ -12,7 +12,7 @@
 {{ $navscript := resources.Get "js/navbar.js" | resources.Minify | resources.Fingerprint }}
 <script src="{{ $navscript.RelPermalink }}"></script>
 
-{{- template "_internal/google_analytics_async.html" . -}}
+{{- template "_internal/google_analytics.html" . -}}
 
 <!-- RSS -->
 {{ with .OutputFormats.Get "rss" -}}
