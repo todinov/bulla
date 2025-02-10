@@ -148,4 +148,14 @@ pre {
     h3:not(:first-child) {
         margin-top: 2em;
     }
+
+    li {
+        &:not(:last-child) {
+            margin-bottom: 1em;
+        }
+
+        p {
+            margin-bottom: 0 !important;
+        }
+    }
 }
