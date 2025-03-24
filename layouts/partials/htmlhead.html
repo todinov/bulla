@@ -6,7 +6,7 @@
 <link rel="icon" href="{{ "favicon.png" | relURL }}" type="image/x-icon">
 
 <!-- Theme stylesheet, you can customize scss by creating `assets/custom.scss` in your website -->
-{{- $styles := resources.Get "style.sass" | resources.ExecuteAsTemplate "style.sass" . | resources.ToCSS | resources.Minify | resources.Fingerprint }}
+{{- $styles := resources.Get "style.sass" | resources.ExecuteAsTemplate "style.sass" . | toCSS | resources.Minify | resources.Fingerprint }}
 <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}">
 
 {{ $navscript := resources.Get "js/navbar.js" | resources.Minify | resources.Fingerprint }}
