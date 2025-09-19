@@ -1,9 +1,32 @@
-<div role="search" id="search-wrapper" class="dropdown">
-    <input type="search" class="input" placeholder="Search" autocomplete="off" id="search-field" disabled="disabled" />
-
-    <div class="dropdown-menu">
-        <div class="dropdown-content" id="search-results"></div>
+<div role="search" class="mb-4">
+    <div id="search-trigger" class="field">
+        <p class="control has-icons-left has-icons-right">
+            <input class="input" type="search" placeholder="Search" autocomplete="off" />
+            <span class="icon is-small is-left">
+                <span class="search"></span>
+            </span>
+            <span class="icon is-small is-right">
+                <span class="slash"></span>
+            </span>
+        </p>
     </div>
+</div>
+
+<div id="search-modal" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+        <div class="box">
+            <p class="control has-icons-left">
+                <input id="search-field" class="input" type="search" placeholder="Search" autocomplete="off" disabled="disabled" />
+                <span class="icon is-small is-left">
+                    <span class="search"></span>
+                </span>
+            </p>
+
+            <div id="search-results"></div>
+        </div>
+    </div>
+    <button class="modal-close is-large" aria-label="close"></button>
 </div>
 
 {{ $script := resources.Get "js/search.js" | resources.Minify | resources.Fingerprint }}

@@ -24,6 +24,36 @@
     }
 }
 
+#search-modal.modal {
+    justify-content: start;
+
+    .modal-content {
+        max-height: calc(100vh - 160px);
+        margin-top: 80px;
+    }
+
+    .modal-content > .box {
+        max-height: inherit;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+#search-results {
+    max-height: inherit;
+    overflow: auto;
+    padding-top: 1em;
+
+    &:empty {
+        padding-top: 0;
+    }
+
+    .breadcrumb a {
+        color: #999;
+        cursor: default;
+    }
+}
+
 pre {
     font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
     font-size: 13px;
@@ -165,5 +195,45 @@ pre {
 
     h1, h2, h3, h4, h5, h6 {
         font-weight: 400;
+    }
+}
+
+.icon {
+    .search {
+        position: relative;
+        width: 12px;
+        height: 12px;
+        border: solid 1.5px currentColor;
+        border-radius: 100%;
+        transform: rotate(-45deg);
+
+        &:before {
+          content: "";
+          position: absolute;
+          top: 10px;
+          left: 4px;
+          height: 6px;
+          width: 1.5px;
+          background-color: currentColor;
+        }
+    }
+
+    .slash {
+        border-radius: 3px;
+        border: 1.5px solid currentColor;
+        height: 16px;
+        line-height: 16px;
+        text-align: center;
+        width: 16px;
+        position: relative;
+
+        &:before {
+            content: "/";
+            font-size: 10px;
+            font-weight: 900;
+            position: absolute;
+            top: -2px;
+            left: 4px;
+        }
     }
 }

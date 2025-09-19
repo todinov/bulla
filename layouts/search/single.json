@@ -1,0 +1,39 @@
+{{- $collection := newScratch -}}
+{{- $collection.Add "index" slice -}}
+
+{{- $searchablePages := where .Site.Pages "Params.type" "!=" "search" -}}
+
+{{- range $index, $page := $searchablePages -}}
+  {{- $data := newScratch -}}
+
+  {{- $data.Set "pageData" "" -}}
+  {{- $data.Set "pageContent" "" -}}
+  {{- $data.Set "pageURL" "" -}}
+  {{- $data.Set "pageAncestors" slice -}}
+  {{- $data.Set "pageTag" "" -}}
+
+  {{- if gt (len $page.Content) 0 -}}
+    {{- $data.Set "pageContent" $page.Plain -}}
+
+    {{- $data.Set "pageURL" $page.Permalink -}}
+
+    {{- range where $page.Ancestors.Reverse "IsHome" false -}}
+      {{- $data.Add "pageAncestors" (dict "title" .LinkTitle "path" .Path) -}}
+    {{- end -}}
+
+    {{- if (isset $page.Params "tags") -}}
+      {{- $data.Set "pageTag" (delimit $page.Params.tags " ; ") -}}
+    {{- end -}}
+
+    {{- $collection.Add "index" (dict
+      "id" $index
+      "title" $page.Title
+      "url" ($data.Get "pageURL")
+      "content" ($data.Get "pageContent")
+      "ancestors" ($data.Get "pageAncestors")
+      "tag" ($data.Get "pageTag")
+    ) -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $collection.Get "index" | jsonify -}}
