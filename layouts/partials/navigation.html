@@ -25,23 +25,23 @@
     <ul class="menu-list">
         {{ range (index $menus $menuID) }}
         <li>
-            <a href="{{ .URL }}" title="{{ .Pre }} {{ .Name }}" class="{{if .Params.expanded }}is-expanded{{end}} {{if $currentPage.IsMenuCurrent $menuID . }}is-active{{end}} {{if $currentPage.HasMenuCurrent $menuID . }}has-active{{end}} {{ if .HasChildren }}has-children{{ end }}">
-                {{ .Pre }} {{ .Name }}
+            <a href="{{ .URL }}" title="{{ .Pre }} {{ .Name }}" class="{{if .Params.expanded }}is-expanded{{end}} {{if $currentPage.IsMenuCurrent $menuID . }}is-active{{end}} {{if $currentPage.HasMenuCurrent $menuID . }}has-active{{end}} {{ if .HasChildren }}has-children{{ end }}" {{if .Params.external }}target="_blank"{{end}}>
+                {{ .Pre }} {{ .Name }} {{ .Post }}
             </a>
 
             {{ if .HasChildren }}
             <ul class="sub-menu">
                 {{ range .Children }}
                 <li>
-                    <a href="{{ .URL }}" title="{{ .Pre }} {{ .Name }}" class="{{ if $currentPage.IsMenuCurrent $menuID . }}is-active{{ end }} {{if $currentPage.HasMenuCurrent $menuID . }}has-active{{end}} {{ if .HasChildren }}has-children{{ end }}">
-                        {{ .Pre }} {{ .Name }}
+                    <a href="{{ .URL }}" title="{{ .Pre }} {{ .Name }}" class="{{ if $currentPage.IsMenuCurrent $menuID . }}is-active{{ end }} {{if $currentPage.HasMenuCurrent $menuID . }}has-active{{end}} {{ if .HasChildren }}has-children{{ end }}" {{if .Params.external }}target="_blank"{{end}}>
+                        {{ .Pre }} {{ .Name }} {{ .Post }}
                     </a>
 
                     {{ if .HasChildren }}
                     <ul class="sub-menu">
                         {{ range .Children }}
                         <li>
-                            <a href="{{ .URL }}" title="{{ .Pre }} {{ .Name }}" class="{{ if $currentPage.IsMenuCurrent $menuID . }}is-active{{ end }}">{{ .Pre }} {{ .Name }}</a>
+                            <a href="{{ .URL }}" title="{{ .Pre }} {{ .Name }}" class="{{ if $currentPage.IsMenuCurrent $menuID . }}is-active{{ end }}" {{if .Params.external }}target="_blank"{{end}}>{{ .Pre }} {{ .Name }} {{ .Post }}</a>
                         </li>
                         {{ end }}
                     </ul>
