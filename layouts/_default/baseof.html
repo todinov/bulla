@@ -20,9 +20,7 @@
         <div class="column {{ if site.Params.enableTOC }}is-7{{ else }}is-9{{ end }}">
           <h1 class="title">{{ .Page.Title }}</h1>
 
-          <div class="content">
-            {{ template "main" . }}
-          </div>
+          {{ template "main" . }}
         </div>
 
         {{ if site.Params.enableTOC }}
