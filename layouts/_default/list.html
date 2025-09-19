@@ -1,7 +1,9 @@
 {{ define "main" }}
 <article class="markdown">
   {{ if .Content }}
-    {{- .Content -}}
+    <div class="content">
+      {{- .Content -}}
+    </div>
   {{ else }}
     {{ range .Pages }}
       <li>
