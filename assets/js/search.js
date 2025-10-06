@@ -13,7 +13,7 @@
         }
     });
 
-    fetch("/search/index.json")
+    fetch(BullaSearchConfig.index)
         .then(response => {
             return response.json();
         })

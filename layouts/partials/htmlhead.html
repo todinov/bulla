@@ -20,7 +20,17 @@
 {{ end -}}
 
 {{ if .Site.Params.enableSearch }}
-  <script src="https://unpkg.com/minisearch@7.2.0/dist/umd/index.js"></script>
+  <script src="{{ "minisearch/index.js" | relURL }}"></script>
+
+  <script type="text/javascript">
+    {{- range where .Site.Pages "Params.type" "=" "search" | first 1 -}}
+      var BullaSearchConfig = {
+          index: "{{ .Permalink }}",
+      };
+    {{- else -}}
+      console.error("No search index defined. Create a content page with type 'search'.");
+    {{- end -}}
+  </script>
 {{ end }}
 
 {{ partial "css" . }}
